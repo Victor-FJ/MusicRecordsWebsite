@@ -11,13 +11,14 @@ interface IRecord {
     yearOfPublication: number
 }
 
-let baseUrl: string = "https://restmusicrecords.azurewebsites.net/api/MusicRecords"
+let baseUrl: string = "https://tristanmusicrecords.azurewebsites.net/api/MusicRecords"
 
 
 new Vue({
     el: "#app",
     data: {
-        records: []
+        records: [],
+        titleToGetBy: ""
     },
     methods: {
         getAllRecords() {
@@ -26,6 +27,17 @@ new Vue({
         helperGetAndShow(url: string) { // helper metode: getAllRecord + getByVendor are very similar
             axios.get<IRecord[]>(url)
                 .then((response: AxiosResponse<IRecord[]>) => {
+                    this.records = response.data
+                })
+                .catch((error: AxiosError) => {
+                    //this.message = error.message
+                    alert(error.message) // https://www.w3schools.com/js/js_popup.asp
+                })
+        },
+        getByTitle(title: string) {
+            let url: string = baseUrl + "/" + title
+            axios.get<IRecord>(url)
+                .then((response: AxiosResponse<IRecord>) => {
                     this.records = response.data
                 })
                 .catch((error: AxiosError) => {
