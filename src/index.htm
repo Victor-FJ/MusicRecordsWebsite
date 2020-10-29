@@ -20,25 +20,35 @@
     <h2>Get all etc (GET)</h2>
     <button id="getAllButton" v-on:click="getAllRecords" class="btn btn-primary">Get all records</button>
 
-    <br/>
+    <br />
 
     <ul id="recordlist" v-if="records.length">
       <li v-for="record in records">
-        {{record.nr}} {{record.title}} : {{record.artist}} {{record.duration}}  {{record.yearOfPublication}}
+        {{record.nr}} {{record.title}} : {{record.artist}} {{record.duration}} {{record.yearOfPublication}}
       </li>
     </ul>
     <div v-else>No records</div>
-  </div>
 
-  <h2>Get by Title (GET)</h2>
-  <input v-model="titleToGetBy" placeholder="title" type="string" />
-  <button v-on:click="getByTitle(titleToGetBy)" class="btn btn-primary">Get by title</button>
-  <div v-if="singleRecord">
-    {{record.nr}} {{record.title}} : {{record.artist}} {{record.duration}}  {{record.yearOfPublication}}
-  </div>
-  <div v-else>No such record</div>
+    <select id="Choices" >
+      <option value="Title">Title</option>
+      <option value="Artist">Artist</option>
+      <option value="YearOfPublication">YearOfPublication</option> 
+    </select>
+    </select>
 
-  <script src="bundle.js"></script>
+
+    <h2>Get by Title (GET)</h2>
+    <input v-model="titleToGetBy" placeholder="title" type="string" />
+    <button v-on:click="getByTitle(titleToGetBy)" class="btn btn-primary">Get by title</button>
+    <div v-if="singleRecord">
+      {{record.nr}} {{record.title}} : {{record.artist}} {{record.duration}} {{record.yearOfPublication}}
+    </div>
+    <div v-else>No such record</div>
+
+    <script src="bundle.js"></script>
+
+
+  </div>
 </body>
 
 </html>

@@ -20,6 +20,9 @@ new Vue({
         records: [],
         titleToGetBy: ""
     },
+    created(){
+        this.getAllRecords()
+    }
     methods: {
         getAllRecords() {
             this.helperGetAndShow(baseUrl)
