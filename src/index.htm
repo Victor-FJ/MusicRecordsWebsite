@@ -21,15 +21,15 @@
     <button id="getAllButton" v-on:click="getAllRecords" class="btn btn-primary">Get all records</button>
 
     <br />
-    <input v-model="search" placeholder="search" type="text"/>
-    <button v-on:click="getByTitle(search)" class="btn btn-primary">getByTitle</button>
-    <button v-on:click="getByArtist(search)" class="btn btn-primary">getByArtist</button>
-    <button v-on:click="getByYearOfPublication(search)" class="btn btn-primary">getByYearOfPublication</button>
+    <input v-model="search" id="searchId" placeholder="search" type="text"/>
+    <button id="getByTitle" v-on:click="getByTitle(search)" class="btn btn-primary">getByTitle</button>
+    <button id="getByArtist" v-on:click="getByArtist(search)" class="btn btn-primary">getByArtist</button>
+    <button id="getByYearOfPublication" v-on:click="getByYearOfPublication(search)" class="btn btn-primary">getByYearOfPublication</button>
 
 
     <ul id="recordlist" v-if="records.length">
       <li v-for="record in records">
-        {{record.nr}} {{record.title}} : {{record.artist}} {{record.duration}} {{record.yearOfPublication}}
+        {{record.nr}} : {{record.title}} by {{record.artist}}, it lasts {{record.duration}} seconds, and it came out in year {{record.yearOfPublication}}
       </li>
     </ul>
     <div v-else>No records</div>
